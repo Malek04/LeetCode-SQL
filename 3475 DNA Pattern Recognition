@@ -1,0 +1,9 @@
+select sample_id,
+       dna_sequence,
+       species,
+       REGEXP_LIKE(dna_sequence, '^ATG') as has_start,
+       REGEXP_LIKE(dna_sequence, 'TAA$|TAG$|TGA$')as has_stop,
+       REGEXP_LIKE(dna_sequence, 'ATAT')as has_atat,
+       REGEXP_LIKE(dna_sequence, 'GGG')as has_ggg
+from Samples
+ORDER BY sample_id ASC;
